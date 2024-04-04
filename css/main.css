@@ -42,3 +42,7 @@
   cursor: pointer;
   box-shadow: grey 3px 3px 10px 0px;
 }
+
+.write-button:hover {
+  background-color: #ec904a;
+}
