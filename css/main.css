@@ -6,12 +6,12 @@
   border-bottom: 1px solid whitesmoke;
 }
 
-.item-list__img {
-  width: 140px;
-  height: 140px;
-  border: 1px solid grey;
-  border-radius: 10px;
-  margin-right: 10px;
+.item-list__img img {
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 10px 0 10px;
+  border-radius: 15px;
 }
 
 .item-list__info-title {
