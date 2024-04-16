@@ -26,7 +26,7 @@ const handleSubmitSignup = async (event) => {
     if (data === "200") {
       div.innerText = "";
       alert("You have successfully registed!");
-      window.location.pathname = "/login.html";
+      window.location.pathname = "/signin.html";
     }
   } else {
     div.innerText = "The passwords do not match.";
