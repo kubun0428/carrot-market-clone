@@ -1,3 +1,4 @@
+import hashlib
 from fastapi import Depends, FastAPI, UploadFile, Form, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
@@ -40,7 +41,7 @@ def query_user(data):
     return user
 
 @app.post('/signin')
-def login(id:Annotated[str, Form()],
+def signin(id:Annotated[str, Form()],
            password:Annotated[str, Form()]):
     user = query_user(id)
     if not user:
@@ -68,9 +69,10 @@ def signup(id:Annotated[str, Form()],
     if (exists):
         print("The member already exists!")
     else:
+        hashed_password = hashlib.sha256(password.encode()).hexdigest()
         cur.execute(f"""
                     INSERT INTO users(id, name, email, password)
-                    VALUES ('{id}', '{name}', '{email}', '{password}')
+                    VALUES ('{id}', '{name}', '{email}', '{hashed_password}')
                     """)
         con.commit()
     return '200'

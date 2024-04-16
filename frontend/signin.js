@@ -11,7 +11,7 @@ const handleSubmitSignin = async (event) => {
   const data = await res.json();
   const accessToken = data.access_token;
   window.localStorage.setItem("token", accessToken);
-  alert("로그인되었습니다!");
+  alert("Logged in successfully!");
 
   window.location.pathname = "/";
 };

@@ -5,10 +5,10 @@ const calcTime = (timeStamp) => {
   const minute = time.getMinutes();
   const second = time.getSeconds();
 
-  if (hour > 0) return `${hour}시간 전`;
-  else if (minute > 0) return `${minute}분 전`;
-  else if (second > 0) return `${second}초 전`;
-  else return "방금 전";
+  if (hour > 0) return `${hour}hours ago`;
+  else if (minute > 0) return `${minute}minutes ago`;
+  else if (second > 0) return `${second}seconds ago`;
+  else return "just now";
 };
 
 const renderData = (data) => {
@@ -59,7 +59,7 @@ const fetchList = async () => {
   });
 
   if (response.status === 401) {
-    alert("로그인이 필요합니다");
+    alert("Login required");
     window.location.pathname = "/signin.html";
     return;
   }
