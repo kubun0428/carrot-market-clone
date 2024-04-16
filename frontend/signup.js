@@ -24,8 +24,9 @@ const handleSubmitSignup = async (event) => {
     });
     const data = await res.json();
     if (data === "200") {
-      div.innerText = "You have successfully registed!";
-      div.style.color = "blue";
+      div.innerText = "";
+      alert("You have successfully registed!");
+      window.location.pathname = "/login.html";
     }
   } else {
     div.innerText = "The passwords do not match.";

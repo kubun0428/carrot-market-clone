@@ -54,8 +54,21 @@ async def get_image(item_id):
     return Response(content = bytes.fromhex(image_bytes));
 
 @app.post('/signup')
-def signup(id:Annotated[str, Form()], password:Annotated[str, Form()]):
-    print(id, password)
+def signup(id:Annotated[str, Form()],
+           password:Annotated[str, Form()],
+           name: Annotated[str, Form()],
+           email: Annotated[str, Form()]):
+    exists = cur.execute(f"""
+                         SELECT EXISTS(SELECT 1 FROM users WHERE id='{id:}')
+                         """).fetchone()[0]
+    if (exists):
+        print("The member already exists!")
+    else:
+        cur.execute(f"""
+                    INSERT INTO users(id, name, email, password)
+                    VALUES ('{id}', '{name}', '{email}', '{password}')
+                    """)
+        con.commit()
     return '200'
 
 app.mount("/", StaticFiles(directory = "frontend", html=True), name="frontend")
