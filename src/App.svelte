@@ -17,14 +17,19 @@
   const auth = getAuth();
 
   const checkSignin = async () =>{
-    const token = localStorage.getItem("token");
-    if (!token) return (isLoading=false);
-
-    const credential = GoogleAuthProvider.credential(null, token);
-    const result = await signInWithCredential(auth, credential);
-    const user = result.user;
-    user$.set(user);
-    isLoading = false;
+    try{
+      const token = localStorage.getItem("token");
+      if (!token) return (isLoading=false);
+  
+      const credential = GoogleAuthProvider.credential(null, token);
+      const result = await signInWithCredential(auth, credential);
+      const user = result.user;
+      user$.set(user);
+    } catch (error){
+      console.error("Login failed: ", error);
+    } finally{
+      isLoading = false;
+    }
   }
 
   const routes = {
