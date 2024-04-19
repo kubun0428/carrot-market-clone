@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign in</title>
-  </head>
-  <body>
-    <div>Sign-In</div>
+<div>Sign-In</div>
     <form id="signin-form" action="/signin" method="POST">
       <div>
         <label for="id">id</label>
@@ -21,7 +13,3 @@
       </div>
       <div id="info"></div>
     </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
-    <script src="signin.js"></script>
-  </body>
-</html>
