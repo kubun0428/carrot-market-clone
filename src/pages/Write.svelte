@@ -101,7 +101,6 @@
     font-size: 20px;
     text-align: center;
     color: #333;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   }
   #write-form {
     max-width: 800px;
@@ -109,7 +108,6 @@
     padding: 30px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
   #write-form div {
@@ -139,7 +137,6 @@
 
   #description {
     min-height: 200px;
-    font-family: 'Georgia', serif;
   }
 
   input[type="submit"] {

@@ -45,7 +45,7 @@
         </div>
     </div>
     {/each}
-    <a class="write-button" href="#/write">+ write</a>
+    <a class="write-button" href="#/write">+ Post</a>
 </main>
 
 <div class="media-info-msg"></div>
