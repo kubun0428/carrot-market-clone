@@ -1,9 +1,37 @@
 <script>
+    import { onMount } from "svelte";
+    import Footer from "../components/Footer.svelte";
+    import { getDatabase, ref, onValue } from "firebase/database";
+
     let hour = new Date().getHours();
     let min = new Date().getMinutes();
     setInterval(() => {
         min = min+1
     }, 1000*60);
+
+    $: items = [];
+
+    const db = getDatabase();
+    const itemsRef = ref(db, "items/");
+    onMount(()=>
+        onValue(itemsRef, (snapshot) => {
+            const data = snapshot.val();
+            items = Object.values(data).reverse();
+        })
+    );
+
+    const calcTime = (timeStamp) => {
+        const curTime = new Date().getTime() - 9 * 60 * 60 * 1000;
+        const time = new Date(curTime - timeStamp);
+        const hour = time.getHours();
+        const minute = time.getMinutes();
+        const second = time.getSeconds();
+
+        if (hour > 0) return `${hour} hours ago`;
+        else if (minute > 0) return `${minute} minutes ago`;
+        else if (second > 0) return `${second} seconds ago`;
+        else return "just now";
+    };
 </script>
 
 <header>
@@ -34,43 +62,25 @@
         <button><img src="assets\car.svg" alt =""/> Used Cars</button>
       </div>
     </div>
-    <div></div>
-  </header>
-  <main>
-    <a class="write-button" href="#/write">+ write</a>
-  </main>
-  <footer>
-    <div class="footer-block">
-      <div class="footer-icons">
-        <div class="footer-icons__img">
-          <img src="assets/house.svg" alt="" />
+</header>
+
+<main>
+    {#each items as item}
+    <div class = "item-list">
+        <div class = "item-list__img">
+            <img src = {item.imgURL} alt=""/>
         </div>
-        <div>Home</div>
-      </div>
-      <div class="footer-icons">
-        <div class="footer-icons__img">
-          <img src="assets/document.svg" alt="" />
+        <div class = "item-list__info">
+            <div class = "item-list__info-title">{item.title}</div>
+            <div class = "item-list__info-meta">{item.place} - {calcTime(item.insertAt)}</div>
+            <div class = "item-list__info-price">{item.price}</div>
+            <div>{item.description}</div>
         </div>
-        <div>Local Community</div>
-      </div>
-      <div class="footer-icons">
-        <div class="footer-icons__img">
-          <img src="assets/location.svg" alt="" />
-        </div>
-        <div>Nearby</div>
-      </div>
-      <div class="footer-icons">
-        <div class="footer-icons__img">
-          <img src="assets/chat.svg" alt="" />
-        </div>
-        <div>Chat</div>
-      </div>
-      <div class="footer-icons">
-        <div class="footer-icons__img">
-          <img src="assets/person.svg" alt="" />
-        </div>
-        <div>My Profile</div>
-      </div>
     </div>
-  </footer>
-  <div class="media-info-msg">The screen is too small.</div>
+    {/each}
+    <a class="write-button" href="#/write">+ write</a>
+</main>
+
+<div class="media-info-msg">The screen is too small.</div>
+
+<Footer location="home"/>

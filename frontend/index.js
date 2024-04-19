@@ -1,16 +1,3 @@
-const calcTime = (timeStamp) => {
-  const curTime = new Date().getTime() - 9 * 60 * 60 * 1000;
-  const time = new Date(curTime - timeStamp);
-  const hour = time.getHours();
-  const minute = time.getMinutes();
-  const second = time.getSeconds();
-
-  if (hour > 0) return `${hour}hours ago`;
-  else if (minute > 0) return `${minute}minutes ago`;
-  else if (second > 0) return `${second}seconds ago`;
-  else return "just now";
-};
-
 const renderData = (data) => {
   const main = document.querySelector("main");
   data.reverse().forEach(async (obj) => {
