@@ -1,3 +1,3 @@
 # Welcome to Carrot-clone!
 
-carrot-market-261de.firebaseapp.com
+https://carrot-market-261de.firebaseapp.com/
