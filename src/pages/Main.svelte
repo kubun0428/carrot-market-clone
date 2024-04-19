@@ -26,6 +26,7 @@
         else if (second > 0) return `${second} seconds ago`;
         else return "just now";
     };
+    
 </script>
 
 <Header />
@@ -39,7 +40,7 @@
         <div class = "item-list__info">
             <div class = "item-list__info-title">{item.title}</div>
             <div class = "item-list__info-meta">{item.place} - {calcTime(item.insertAt)}</div>
-            <div class = "item-list__info-price">{item.price}</div>
+            <div class = "item-list__info-price">{item.price.toLocaleString()}원</div>
             <div>{item.description}</div>
         </div>
     </div>
@@ -47,6 +48,6 @@
     <a class="write-button" href="#/write">+ write</a>
 </main>
 
-<div class="media-info-msg">The screen is too small.</div>
+<div class="media-info-msg"></div>
 
 <Footer location="home"/>

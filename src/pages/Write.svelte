@@ -67,7 +67,7 @@
     }
 
 </script>
-
+<div id = title_top>Posting Page</div>
 <form id="write-form" on:submit|preventDefault={handleSubmit}>
     <div>
       <label for="image">Image</label>
@@ -90,8 +90,70 @@
       <input type="text" id="place" name="place" bind:value={place}/>
     </div>
     <div>
-      <input type="submit" />
+      <input type="submit" value = "Post!"/>
     </div>
 </form>
 
 <Footer location="write"/>
+
+<style>
+  #title_top {
+    font-size: 20px;
+    text-align: center;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  #write-form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  #write-form div {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type="file"] {
+    border: none;
+  }
+
+  #description {
+    min-height: 200px;
+    font-family: 'Georgia', serif;
+  }
+
+  input[type="submit"] {
+    background-color: #ff6e00;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #ec904a;
+  }
+</style>

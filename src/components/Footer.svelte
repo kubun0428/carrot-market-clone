@@ -36,7 +36,7 @@
                   <img src="assets/document.svg" alt="" />
             {/if}
         </div>
-        <div>Local Community</div>
+        <div>My Local</div>
     </div>
     <div class="footer-icons">
         <div class="footer-icons__img">
@@ -72,7 +72,7 @@
                 <img src="assets/person.svg" alt="" />
             {/if}
         </div>
-        <div>My Profile</div>
+        <div>My Carrot</div>
     </button>
     </div>
   </footer>
